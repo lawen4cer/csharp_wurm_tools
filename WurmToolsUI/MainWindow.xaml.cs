@@ -31,13 +31,15 @@ namespace WurmToolsUI
             int delay = 1;
             //TODO: fix this error. Need to check for empty text in the delay box
             string input = DelayTextBox.Text;
-            if(string.IsNullOrEmpty(input) || (input != ""))
+            if(string.IsNullOrEmpty(input))
             {
-                delay = (int.Parse(input) * 1000);
+
+                MessageBox.Show("You must enter a delay in the box above Start Mining", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
             else
             {
-                MessageBox.Show("You must enter a delay in the box above Start Mining", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                delay = (int.Parse(input) * 1000);
             }
             
             
