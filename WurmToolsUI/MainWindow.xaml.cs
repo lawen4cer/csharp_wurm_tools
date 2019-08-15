@@ -29,7 +29,7 @@ namespace WurmToolsUI
         private async void StartMineButton_Click(object sender, RoutedEventArgs e)
         {
             int delay = 1;
-            //TODO: fix this error. Need to check for empty text in the delay box
+            
             string input = DelayTextBox.Text;
             if(string.IsNullOrEmpty(input))
             {
