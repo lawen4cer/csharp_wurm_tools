@@ -1,0 +1,17 @@
+﻿<Window x:Class="WurmToolsUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WurmToolsUI"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button Click="StartMineButton_Click" x:Name="StartMineButton" Content="Start Mining" HorizontalAlignment="Left" Margin="356,133,0,0" VerticalAlignment="Top" Width="75" IsDefault="True"/>
+        <Button Click="StopMiningButton_Click" x:Name="StopMiningButton" Content="Stop Mining" HorizontalAlignment="Left" Margin="356,178,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBox x:Name="DelayTextBox" HorizontalAlignment="Left" Height="18" Margin="306,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195"/>
+        <Label x:Name="label" Content="Enter a delay in seconds" HorizontalAlignment="Left" Margin="306,59,0,0" VerticalAlignment="Top" Width="195"/>
+        <Label x:Name="MiningStatusMessageLabel" Content="You are not mining right now, Enter a delay and click Start Mining!" HorizontalAlignment="Left" Margin="50,213,0,0" VerticalAlignment="Top" Height="206" Width="707" FontSize="24" Foreground="Red"/>
+
+    </Grid>
+</Window>
