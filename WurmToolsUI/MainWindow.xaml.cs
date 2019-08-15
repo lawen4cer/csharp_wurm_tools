@@ -30,7 +30,7 @@ namespace WurmToolsUI
         {
             int delay = 1;
             
-            string input = DelayTextBox.Text;
+            string input = delayTextBox.Text;
             if(string.IsNullOrEmpty(input))
             {
 
@@ -60,6 +60,11 @@ namespace WurmToolsUI
             MiningStatusMessageLabel.Content = "You are not mining right now, Enter a delay and click Start Mining!";
 
             Mining.IsMiningEnabled = false;
+        }
+
+        private void DelayHelpButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("This is the delay in seconds for the duration of the mining action. This can vary based on your skill. I recommend starting at 50 seconds and tuning from there. You must stop mining to update the value!", "Delay Help", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

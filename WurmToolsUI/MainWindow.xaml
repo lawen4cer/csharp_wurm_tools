@@ -20,12 +20,17 @@
 
         <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" Margin="10">
             <Label x:Name="label" Content="Enter a delay in seconds" Height="35" FontSize="20"/>
-            <TextBox x:Name="DelayTextBox" Height="35" Width="150" FontSize="20"/>
+            <TextBox x:Name="delayTextBox" Height="35" Width="150" FontSize="20"/>
+            <Button x:Name="delayHelpButton" Click="DelayHelpButton_Click" BorderThickness="0" Margin="5, 0" Padding="1" Background="Transparent">
+                <Button.Content>
+                    <Image Source="Resources/questionMark.png" Height="30" Width="30" />
+                </Button.Content>
+            </Button>
         </StackPanel>
         
         <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" Margin="10">
-            <Button Click="StartMineButton_Click" x:Name="StartMineButton" Content="Start Mining" Margin="5" IsDefault="True"/>
-            <Button Click="StopMiningButton_Click" x:Name="StopMiningButton" Content="Stop Mining" Margin="5" />
+            <Button Click="StartMineButton_Click" x:Name="startMineButton" Content="Start Mining" Margin="5" IsDefault="True"/>
+            <Button Click="StopMiningButton_Click" x:Name="stopMiningButton" Content="Stop Mining" Margin="5" />
         </StackPanel>
         
         <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Vertical" Margin="10">
