@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WurmToolsUI"
         mc:Ignorable="d"
-        Title="Wurm Tools" Height="450" Width="800">
+        Title="Wurm Tools" Height="450" Width="800" Background="LightGray">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="50"/>
         </Grid.ColumnDefinitions>
@@ -18,10 +19,17 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
+        <Button Grid.Column="0" Grid.Row="0" VerticalAlignment="Top" Height="30" ToolTip="Open Settings Menu. Set Hot Keys Here" Click="SettingsMenuButton_Click">
+            <Button.Content>
+                <Image Source="Resources/settings.png" Height="25" Width="25"/>
+            </Button.Content>
+        </Button>
+
         <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical" Margin="10">
             <StackPanel Orientation="Horizontal">
-                <Label x:Name="label" Content="Enter a delay in seconds" Height="35" FontSize="20"/>
+                <Label x:Name="label" Content="Enter total time in seconds" Height="35" FontSize="20"/>
                 <TextBox x:Name="delayTextBox" Height="35" Width="150" FontSize="20"/>
+                <Button x:Name="saveDelayButton" Content="Save" FontSize="18" Click="SaveDelayButton_Click"/>
                 <Button x:Name="delayHelpButton" Click="DelayHelpButton_Click" BorderThickness="0" Margin="5, 0" Padding="1" Background="Transparent">
                     <Button.Content>
                         <Image Source="Resources/questionMark.png" Height="30" Width="30" />
@@ -30,20 +38,29 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Content="Mining Mode:" Height="35" FontSize="20"/>
-                <CheckBox x:Name="normalMiningMode" Content="Normal" FontSize="20" IsChecked="True" Margin="10" Checked="NormalMiningMode_Checked"/>
-                <CheckBox x:Name="upMiningMode" Content="Up" FontSize="20" Margin="10" />
-                <CheckBox x:Name="downMiningMode" Content="Down" FontSize="20" Margin="10"/>
+                <RadioButton x:Name="normalMining" GroupName="miningMode" Content="Normal" IsChecked="True" FontSize="20" Margin="10" VerticalContentAlignment="Center" HorizontalAlignment="Center" Checked="NormalMining_Checked"/>
+                <RadioButton x:Name="tunnelMining" GroupName="miningMode" Content="Tunnel" FontSize="20" Margin="10" VerticalContentAlignment="Center" HorizontalAlignment="Center" Checked="TunnelMining_Checked"/>
+                <RadioButton x:Name="upMining" GroupName="miningMode" Content="Up" FontSize="20" Margin="10" VerticalContentAlignment="Center" HorizontalAlignment="Center" Checked="UpMining_Checked"/>
+                <RadioButton x:Name="downMining" GroupName="miningMode" Content="Down" FontSize="20" Margin="10" VerticalContentAlignment="Center" HorizontalAlignment="Center" Checked="DownMining_Checked"/>
             </StackPanel>
         </StackPanel>
         
         
         <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" Margin="10">
-            <Button Click="StartMineButton_Click" x:Name="startMineButton" Content="Start Mining" Margin="5" IsDefault="True"/>
-            <Button Click="StopMiningButton_Click" x:Name="stopMiningButton" Content="Stop Mining" Margin="5" />
+            <Button Click="StartMineButton_Click" x:Name="startMineButton" Content="Start Mining" Margin="5" IsDefault="True" Width="300"/>
+            <Button Click="StopMiningButton_Click" x:Name="stopMiningButton" Content="Stop Mining" Margin="5" Width="300"/>
         </StackPanel>
         
         <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Vertical" Margin="10">
-            <Label x:Name="MiningStatusMessageLabel" Content="You are not mining right now, Enter a delay and click Start Mining!" FontSize="24" Foreground="Red"/>
+            <Label x:Name="MiningStatusMessageLabel" Content="You are not mining right now, Enter a delay and click Start Mining!" FontSize="24" Foreground="Red" MinWidth="768"/>
+            <TextBlock x:Name="InstructionsLabel" Margin="0,50" FontSize="14" MinWidth="768" TextWrapping="Wrap">
+                Directions: <LineBreak/> 1. Enter a delay in seconds. This is total time it takes you to mine 3x. Click ? for help <LineBreak/>
+                2. Select mining mode. You can customize keybinds to this in settings. We assume default settings. <LineBreak/>
+                3. Click Start Mining. You must bring Wurm as the active window and have the object you want to mine <LineBreak/> selected as your target
+                within the initial delay that you can set in settings. (Default is 5 seconds).
+                <LineBreak/> Enjoy. 
+                
+            </TextBlock>
         </StackPanel>
         
         
