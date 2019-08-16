@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WurmToolsUI"
         mc:Ignorable="d"
-        Title="Wurm Tools" Height="450" Width="800" Background="LightGray">
+        Title="Wurm Tools" Height="500" Width="800" Background="LightGray">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
@@ -27,9 +27,9 @@
 
         <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical" Margin="10">
             <StackPanel Orientation="Horizontal">
-                <Label x:Name="label" Content="Enter total time in seconds" Height="35" FontSize="20"/>
+                <Label x:Name="label" Content="Enter total time in seconds" Height="35" FontSize="20" Margin="5"/>
                 <TextBox x:Name="delayTextBox" Height="35" Width="150" FontSize="20"/>
-                <Button x:Name="saveDelayButton" Content="Save" FontSize="18" Click="SaveDelayButton_Click"/>
+                <Button x:Name="saveDelayButton" Content="Save" FontSize="18" Click="SaveDelayButton_Click" Margin="5"/>
                 <Button x:Name="delayHelpButton" Click="DelayHelpButton_Click" BorderThickness="0" Margin="5, 0" Padding="1" Background="Transparent">
                     <Button.Content>
                         <Image Source="Resources/questionMark.png" Height="30" Width="30" />
@@ -37,7 +37,17 @@
                 </Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Label Content="Mining Mode:" Height="35" FontSize="20"/>
+                <Label x:Name="timerLabel" Content="How long should we run the script in minutes?" Height="35" FontSize="20" Margin="5"/>
+                <TextBox x:Name="timerTextBox" Height="35" Width="150" FontSize="20"/>
+                <Button x:Name="saveTimerButton" Content="Save" FontSize="18" Click="SaveTimerButton_Click" Margin="5"/>
+                <Button x:Name="timerHelpButton" Click="TimerHelpButton_Click" BorderThickness="0" Margin="5, 0" Padding="1" Background="Transparent">
+                    <Button.Content>
+                        <Image Source="Resources/questionMark.png" Height="30" Width="30" />
+                    </Button.Content>
+                </Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Mining Mode:" Height="35" FontSize="20" Margin="5"/>
                 <RadioButton x:Name="normalMining" GroupName="miningMode" Content="Normal" IsChecked="True" FontSize="20" Margin="10" VerticalContentAlignment="Center" HorizontalAlignment="Center" Checked="NormalMining_Checked"/>
                 <RadioButton x:Name="tunnelMining" GroupName="miningMode" Content="Tunnel" FontSize="20" Margin="10" VerticalContentAlignment="Center" HorizontalAlignment="Center" Checked="TunnelMining_Checked"/>
                 <RadioButton x:Name="upMining" GroupName="miningMode" Content="Up" FontSize="20" Margin="10" VerticalContentAlignment="Center" HorizontalAlignment="Center" Checked="UpMining_Checked"/>
@@ -53,8 +63,15 @@
         
         <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Vertical" Margin="10">
             <Label x:Name="MiningStatusMessageLabel" Content="You are not mining right now, Enter a delay and click Start Mining!" FontSize="24" Foreground="Red" MinWidth="768"/>
-            <TextBlock x:Name="InstructionsLabel" Margin="0,50" FontSize="14" MinWidth="768" TextWrapping="Wrap">
-                Directions: <LineBreak/> 1. Enter a delay in seconds. This is total time it takes you to mine 3x. Click ? for help <LineBreak/>
+            
+            <StackPanel x:Name="TimerContainer" Orientation="Horizontal" Visibility="Hidden">
+                <Label x:Name="TimerLabel" Content="Time Remaining:" FontSize="18"/>
+                <TextBlock Name="CountDownTextBlock" FontSize="18" VerticalAlignment="Center"/>
+            </StackPanel>   
+                
+            
+            <TextBlock x:Name="InstructionsLabel" Margin="0,20" FontSize="14" MinWidth="768" TextWrapping="Wrap">
+                Directions: <LineBreak/> 1. Enter total time in seconds. This is total time it takes you to mine 3x. Click ? for help <LineBreak/>
                 2. Select mining mode. You can customize keybinds to this in settings. We assume default settings. <LineBreak/>
                 3. Click Start Mining. You must bring Wurm as the active window and have the object you want to mine <LineBreak/> selected as your target
                 within the initial delay that you can set in settings. (Default is 5 seconds).

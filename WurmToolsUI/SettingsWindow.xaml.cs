@@ -50,11 +50,13 @@ namespace WurmToolsUI
             Mining.UpMiningModeHotKey = upHotKeyTextBox.Text;
             Mining.DownMiningModeHotKey = downHotKeyTextBox.Text;
 
+            MessageBox.Show("Settings Saved Successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
-
-            MessageBox.Show("Settings Saved Successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             Close();
+            
+            
         }
 
         
@@ -64,6 +66,8 @@ namespace WurmToolsUI
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             Close();
+            
+            
         }
     }
 }
