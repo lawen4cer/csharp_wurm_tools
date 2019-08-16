@@ -10,6 +10,34 @@ namespace WurmTools.Core.Tools
     public class Mining
     {
         public static bool IsMiningEnabled { get; set; } = false;
+
+        public static string SelectedMiningMode { get; set; }
+
+        public static string DisplayedMiningMode
+        {
+            get
+            {
+                return DisplayedMiningMode;
+            }
+            set
+            {
+                switch (SelectedMiningMode)
+                {
+                    case "3":
+                        DisplayedMiningMode = "Normal";
+                        break;
+                    case "4":
+                        DisplayedMiningMode = "Up";
+                        break;
+                    case "5":
+                        DisplayedMiningMode = "Down";
+                        break;
+                    default:
+                        DisplayedMiningMode = "Error";
+                        break;
+                }
+            }
+        }
         
         public static async Task Mine(int delay)
         {
@@ -17,7 +45,7 @@ namespace WurmTools.Core.Tools
             while (IsMiningEnabled)
             {
                 
-                SendKeys.SendWait("{3 3}");
+                SendKeys.SendWait($"{{{SelectedMiningMode} 3}}");
                 await Task.Delay(delay);
             }
         }

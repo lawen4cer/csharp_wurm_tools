@@ -26,7 +26,9 @@ namespace WurmToolsUI
             InitializeComponent();
         }
 
-        private async void StartMineButton_Click(object sender, RoutedEventArgs e)
+        
+
+    private async void StartMineButton_Click(object sender, RoutedEventArgs e)
         {
             int delay = 1;
             
@@ -65,6 +67,13 @@ namespace WurmToolsUI
         private void DelayHelpButton_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("This is the delay in seconds for the duration of the mining action. This can vary based on your skill. I recommend starting at 50 seconds and tuning from there. You must stop mining to update the value!", "Delay Help", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void NormalMiningMode_Checked(object sender, RoutedEventArgs e)
+        {
+            Mining.SelectedMiningMode = "3";
+            upMiningMode.IsChecked = false;
+            downMiningMode.IsChecked = false;
         }
     }
 }
